@@ -1,0 +1,104 @@
+.grid-item {
+    background-color: lightblue;
+    height: 12vh;
+    border-radius: 20%;
+    border-style: solid;
+    border-color: lightcoral;
+    font-size: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 115px);
+    grid-template-rows: 300px repeat(4, 100px); 
+    grid-auto-columns: minmax(150px, auto);
+    grid-auto-rows: minmax(150px, auto);
+    grid-gap: 20px;
+}
+
+
+.backgroundimage {
+    background-image: url("../images/mediterranean.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: rgba(255,255,255,0.4);
+    background-blend-mode: lighten;
+}
+
+
+.grid-item-header {
+    grid-column: 1 / -1;
+    background-color: transparent;
+    border-style: none;
+    font-size: 50px;
+}
+
+.grid-item-header img {
+    float: left;
+    width: 100px;
+    height: 100px;
+    background: #555;
+    mix-blend-mode: multiply;
+}
+
+.grid-item-1 {
+    grid-column: span 1;
+    grid-row: 2/3;
+}
+
+.grid-item-2 {
+    grid-column: span 1; 
+    grid-row: 2/3;
+}
+
+.grid-item-3 {
+    grid-column: span 1;
+    grid-row: 2/3;
+}
+
+.grid-item-4  {
+    grid-column: span 1;
+    grid-row: 2/3;
+}
+
+@media only screen and (max-width: 600px) {
+    .grid-item {
+        height: 5vh;
+        border-radius: 10%;
+        font-size: 10px;
+    }
+    .grid-container {
+        grid-gap: 10px;
+        grid-template-columns: repeat(4, 50px);
+        grid-template-rows: 100px repeat(4, 50px);
+    }
+
+    .grid-item-header {
+        grid-row: 1/2;
+        font-size: 20px;
+    }
+
+    .grid-item-header img {
+        height: 20px;
+        width: 20px;
+    }
+    .grid-item-1 {
+        grid-row: 2/3;
+    }
+    .grid-item-2 {
+        grid-row: 3/4;
+    }
+    .grid-item-3 {
+        grid-row: 4/5;
+    }
+    .grid-item-4 {
+        grid-column: 5/6; 
+    }
+    
+    
+}
+
+
+
