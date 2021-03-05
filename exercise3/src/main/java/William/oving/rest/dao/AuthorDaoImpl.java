@@ -85,6 +85,7 @@ public class AuthorDaoImpl implements Dao<Author> {
         return simpleJdbcInsert.execute(parameters);
     }
 
+
     public void addBookToAuthor(Book b, int authorId) {
         jt.update("INSERT INTO book VALUES(?, ?, ?)",
                 b.getId(), b.getName(), b.getPages());

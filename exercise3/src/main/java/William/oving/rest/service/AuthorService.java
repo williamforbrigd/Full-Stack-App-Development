@@ -39,6 +39,7 @@ public class AuthorService {
         authorRepo.addAuthor(author);
     }
 
+
     public void deleteAuthor(int id) {
         logger.info("Deleting author");
         authorRepo.deleteAuthor(id);

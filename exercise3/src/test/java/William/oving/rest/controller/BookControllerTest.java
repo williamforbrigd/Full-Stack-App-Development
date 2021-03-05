@@ -1,5 +1,6 @@
-package William.oving.rest;
+package William.oving.rest.controller;
 
+import William.oving.rest.RestApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
