@@ -69,8 +69,10 @@ export default {
         this.removeDot();
         let secNum = this.current;
         const calculate = this.prevNum + this.operator + this.current;
+        console.log(calculate);
+        const url = "http://localhost:3000/calculate";
         const execute = async () => {
-          const request = await fetch("/calculate", {
+          const response = await fetch(url, {
             method: "POST",
             headers: {
               Accept: "application/json",
@@ -78,36 +80,25 @@ export default {
             },
             body: JSON.stringify({ calculate: calculate }),
           });
-          return request.json();
+          try {
+            const res = await response.json();
+            this.calculations.push({
+              str:
+                this.prevNum +
+                " " +
+                this.operator +
+                " " +
+                secNum +
+                " = " +
+                res.result,
+              id: this.calculations.length,
+            });
+            this.isOperator = false;
+          } catch {
+            alert("You have written something wrong");
+          }
         };
         execute();
-        /*
-        if (this.operator.charAt(0) === "+") {
-          //this.current = `${parseFloat(this.prevNum) +
-          //parseFloat(this.current)}`;
-        } else if (this.operator.charAt(0) === "-") {
-          this.current = `${parseFloat(this.prevNum) -
-            parseFloat(this.current)}`;
-        } else if (this.operator.charAt(0) === "x") {
-          this.current = `${parseFloat(this.prevNum) *
-            parseFloat(this.current)}`;
-        } else if (this.operator.charAt(0) === "/") {
-          this.current = `${parseFloat(this.prevNum) /
-            parseFloat(this.current)}`;
-        }
-        */
-        this.calculations.push({
-          str:
-            this.prevNum +
-            " " +
-            this.operator +
-            " " +
-            secNum +
-            " = " +
-            this.current,
-          id: this.calculations.length,
-        });
-        this.isOperator = false;
       }
     },
     setDot() {
