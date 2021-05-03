@@ -2,9 +2,10 @@ package calculator.server.web;
 
 import calculator.server.models.Operation;
 import calculator.server.service.OperationService;
+import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import calculator.server.utils.Logger;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,18 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/operation")
 public class OperationController {
-    private static Logger log = new Logger(OperationController.class.toString());
+    //private static Logger log = (Logger) LoggerFactory.getLogger(OperationController.class.toString());
 
     @Autowired
     private OperationService operationService;
 
     @PostMapping(value ="/add")
-    public Operation addOperation(@RequestBody Operation operation) {
-        log.debug("Received new add operation: " + operation.toString());
+    public int addOperation(@RequestBody Operation operation) {
+        //log.debug("Received new add operation: " + operation.toString());
 
-        return operation;
+        return operationService.addOperation(operation);
     }
 
+    /*
     @PostMapping(value ="/minus")
     public Operation minusOperation(@RequestBody Operation operation) {
         log.debug("Received new minus operation: " + operation.toString());
@@ -44,5 +46,6 @@ public class OperationController {
 
         return operation;
     }
+     */
 
 }

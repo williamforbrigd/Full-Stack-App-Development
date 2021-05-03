@@ -2,13 +2,14 @@ package calculator.server.service;
 
 import calculator.server.models.Operation;
 import calculator.server.repo.OperationRepo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import calculator.server.utils.Logger;
 
 @Service
 public class OperationService {
-    private Logger log = new Logger(OperationService.class.toString());
+    private Logger log = LoggerFactory.getLogger(OperationService.class.toString());
 
     @Autowired
     private OperationRepo repo;
@@ -18,6 +19,7 @@ public class OperationService {
         return repo.addOperation(operation);
     }
 
+    /*
     public int minusOperation(Operation operation) {
         log.info("Minus operation: " + operation.toString());
         return repo.minusOperation(operation);
@@ -32,6 +34,7 @@ public class OperationService {
         log.info("Add operation: " + operation.toString());
         return repo.divideOperation(operation);
     }
+     */
 
 
 }
