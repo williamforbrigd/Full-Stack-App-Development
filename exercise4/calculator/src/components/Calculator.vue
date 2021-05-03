@@ -69,36 +69,8 @@ export default {
         this.removeDot();
         let secNum = this.current;
         if (this.operator.charAt(0) === "+") {
-          //this.current = `${parseFloat(this.prevNum) +
-          //parseFloat(this.current)}`;
-          const url = "http://localhost:8080/operation/add";
-          console.log(this.prevNum + " " + this.current + " " + this.operator);
-          console.log(typeof this.prevNum);
-          console.log(typeof this.current);
-          console.log(typeof this.operator);
-          const body = JSON.stringify({
-            num1: this.prevNum,
-            num2: this.current,
-            operator: this.operator,
-          });
-          console.log(body);
-          const execute = async () => {
-            const request = await fetch(url, {
-              method: "post",
-              headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                num1: this.prevNum,
-                num2: this.current,
-                operator: this.operator,
-              }),
-            });
-            //console.log(request.json());
-            return request.json();
-          };
-          execute();
+          this.current = `${parseFloat(this.prevNum) +
+            parseFloat(this.current)}`;
         } else if (this.operator.charAt(0) === "-") {
           this.current = `${parseFloat(this.prevNum) -
             parseFloat(this.current)}`;
