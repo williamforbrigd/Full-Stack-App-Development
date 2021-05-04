@@ -1,10 +1,10 @@
-package calculator.server;
+package calculator.springserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Server2ApplicationTests {
+class SpringserverApplicationTests {
 
 	@Test
 	void contextLoads() {
