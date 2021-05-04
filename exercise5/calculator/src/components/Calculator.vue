@@ -9,7 +9,7 @@
       <div class="button" @click="update(7)">7</div>
       <div class="button" @click="update(8)">8</div>
       <div class="button" @click="update(9)">9</div>
-      <div class="button operator" @click="setOperator('x')">x</div>
+      <div class="button operator" @click="setOperator('*')">x</div>
       <div class="button" @click="update(4)">4</div>
       <div class="button" @click="update(5)">5</div>
       <div class="button" @click="update(6)">6</div>
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -99,6 +100,36 @@ export default {
           }
         };
         execute();
+      }
+    },
+    calculate1() {
+      if (this.prevNum !== null && this.isOperator) {
+        this.removeDot();
+        let secNum = this.current;
+        const calculate = this.prevNum + this.operator + this.current;
+        console.log(calculate);
+        const url = "http://localhost:3000/calculate";
+        axios
+          .post(url, { calculate: calculate })
+          .then((response) => {
+            console.log(response);
+            this.calculations.push({
+              str:
+                this.prevNum +
+                " " +
+                this.operator +
+                " " +
+                secNum +
+                " = " +
+                response.data.result,
+              id: this.calculations.length,
+            });
+            this.isOperator = false;
+          })
+          .catch((error) => {
+            console.log(error);
+            alert("you have written something wrong");
+          });
       }
     },
     setDot() {
