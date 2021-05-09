@@ -4,11 +4,15 @@
 
 ### Build first
 
+```
 docker build -t calculatorclient .
+```
 
 ### Then run the docker image
 
+```
 docker run -it --rm --publish 8080:8080 calculatorclient
+```
 
 ## Project setup
 
