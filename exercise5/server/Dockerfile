@@ -1,9 +1,9 @@
-FROM node:lts
+FROM node:14
 
-COPY ["package.json", "package-lock.json", "./"]
-COPY . .
+COPY package*.json ./
 
 RUN npm install
+COPY . .
 
-
+EXPOSE 3000
 CMD ["npm", "run", "start"]
